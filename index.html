@@ -216,3 +216,13 @@
   </script>
 </body>
 </html>
+{
+  html: `<h2>Thank you for being here 💖</h2>
+         <button class="cute-btn" id="restartBtn">Go back to the start</button>`,
+  interactive: true,
+  handle: function() {
+    document.getElementById('restartBtn').onclick = () => {
+      showSection(0);
+    };
+  }
+}
