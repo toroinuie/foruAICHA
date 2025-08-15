@@ -3,227 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday AICHA!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background: #ffd6e0;
-      font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
-      color: #d94f8a;
+      background: #fff0f6;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #d6336c;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
-      transition: background 0.4s;
     }
     #container {
-      background: rgba(255, 255, 255, 0.7);
-      padding: 2rem 2.5rem;
-      border-radius: 2rem;
-      box-shadow: 0 4px 24px rgba(225,50,100,0.15);
+      margin-top: 60px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px #ffb6c1aa;
+      padding: 36px 32px;
+      max-width: 600px;
+      width: 90%;
       text-align: center;
-      max-width: 420px;
-      min-width: 260px;
-      margin: 2rem;
     }
     h1, h2 {
-      font-family: 'Pacifico', 'Comic Sans MS', cursive;
       margin: 0.5em 0;
-      color: #df2d77;
-      letter-spacing: 2px;
     }
-    .cute-btn {
-      background: linear-gradient(90deg, #ffb6c1 60%, #ffe4ec 100%);
-      color: #d94f8a;
+    button, input[type="text"] {
+      font-size: 1.2em;
       border: none;
-      border-radius: 1rem;
-      padding: 0.6em 1.6em;
-      font-size: 1.1em;
-      font-family: inherit;
-      margin: 0.7em 1em 0 1em;
+      border-radius: 8px;
+      padding: 0.7em 1.5em;
+      margin: 1em 0.5em;
+      background: #ffe4ea;
+      color: #d6336c;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(225,90,150,0.08);
-      transition: background 0.2s, box-shadow 0.2s;
+      outline: none;
+      transition: background 0.2s;
     }
-    .cute-btn:hover {
-      background: linear-gradient(90deg, #ffe4ec 60%, #ffb6c1 100%);
-      box-shadow: 0 4px 16px rgba(225,90,150,0.14);
+    button:hover {
+      background: #ffb6c1;
     }
     input[type="text"] {
-      padding: 0.6em 1em;
-      border-radius: 1rem;
-      border: 1.5px solid #ffb6c1;
+      width: 60%;
+      box-shadow: 0 2px 8px #ffb6c133;
+      border: 1px solid #ffb6c1;
+      background: #fff0f6;
+      margin-bottom: 1em;
+      color: #d6336c;
+    }
+    .letter {
+      background: #fff0f6;
+      border-radius: 12px;
+      padding: 1em;
       margin-top: 1em;
-      font-size: 1em;
-      color: #d94f8a;
-      background: #fff5fa;
-      text-align: center;
-      outline: none;
       font-family: inherit;
-    }
-    .letter-container {
-      background: #fff0f7;
-      border-radius: 1.5rem;
-      padding: 2rem 1.5rem;
-      margin-top: 1.5em;
-      color: #d94f8a;
       font-size: 1.1em;
-      box-shadow: 0 2px 12px rgba(225,90,150,0.08);
+      color: #ad1457;
+      text-align: left;
+      line-height: 1.6;
     }
-    .space-tip {
-      font-size: 0.95em;
-      color: #ab4780;
-      margin-top: 1em;
-      opacity: 0.8;
-      letter-spacing: 1px;
-      animation: blink 1.6s infinite;
-    }
-    @keyframes blink {
-      0%, 60%, 100% { opacity: 0.8; }
-      80% { opacity: 0.3; }
+    .hint {
+      color: #888;
+      font-size: 0.9em;
+      margin-top: 2em;
+      font-family: sans-serif;
     }
   </style>
 </head>
 <body>
-  <div id="container">
-    <!-- Content will appear here -->
-  </div>
-  <script>
-    // Sections content
-    const sections = [
-      // Section 1: Greeting
-      {
-        html: `<h1>Hello, AICHA!</h1>
-               <div class="space-tip">Press space to continue...</div>`,
-      },
-      // Section 2: Compliment
-      {
-        html: `<h2>You look pretty today ✨</h2>
-               <div class="space-tip">Press space to continue...</div>`,
-      },
-      // Section 3: Do you know what's today? (Yes/No)
-      {
-        html: `<h2>Do u know what's today?</h2>
-               <button class="cute-btn" id="yesBtn">Yes</button>
-               <button class="cute-btn" id="noBtn">No</button>`,
-        interactive: true,
-        handle: function(next) {
-          const yesBtn = document.getElementById('yesBtn');
-          const noBtn = document.getElementById('noBtn');
-          yesBtn.onclick = () => {
-            showContent(`<h2>Of course u do,<br>today is a very special day.<br>right queen hehe!</h2>
-                         <div class="space-tip">Press space to continue...</div>`);
-            waitSpace(next);
-          };
-          noBtn.onclick = () => {
-            showContent(`<h2>Ohh i guess u forgot hehehe,<br>it's okay 💗</h2>
-                         <div class="space-tip">Press space to continue...</div>`);
-            waitSpace(next);
-          };
-        }
-      },
-      // Section 4: Question - who do you love the most?
-      {
-        html: `<h2>I have a question for u ?</h2>
-               <div class="space-tip">Press space to continue...</div>`,
-      },
-      {
-        html: `<h2>Who is the person that u love the most?</h2>
-               <input type="text" id="loveInput" placeholder="Type a name...">
-               <br>
-               <button class="cute-btn" id="submitLove">Submit</button>`,
-        interactive: true,
-        handle: function(next) {
-          document.getElementById('submitLove').onclick = () => {
-            const val = document.getElementById('loveInput').value.trim().toLowerCase();
-            let msg = '';
-            if (val === 'hiba') {
-              msg = 'awwww I LOVE U TOO 💕';
-            } else if (val === 'marwa') {
-              msg = 'cute u guys are my fav too 😘';
-            } else if (val === 'abdullah') {
-              msg = 'not me T_T u guys are cute though 🥺';
-            } else if (val === '') {
-              msg = 'hmmm you didn\'t answer! 🙈';
-            } else {
-              msg = 'not what i expected but ok cuties 💗';
-            }
-            showContent(`<h2>${msg}</h2>
-                         <div class="space-tip">Press space to continue...</div>`);
-            waitSpace(next);
-          };
-          document.getElementById('loveInput').addEventListener("keyup", function(e) {
-            if (e.key === "Enter") document.getElementById('submitLove').click();
-          });
-        }
-      },
-      // Section 5: August 18th special
-      {
-        html: `<h2>August 18th today is really special.<br>Why u will ask me</h2>
-               <div class="space-tip">Press space to continue...</div>`,
-      },
-      // Section 6: Birth message
-      {
-        html: `<h2>bc ur mother gave birth to the prettiest<br>and kindest and very dalo3aaa girl 💖</h2>
-               <div class="space-tip">Press space to continue...</div>`,
-      },
-      // Section 7: Letter
-      {
-        html: `<h1 style="font-size:2.6em; margin-bottom:0.2em;">HAPPY BIRTHDAY</h1>
-        <div class="letter-container">
-            I have no words to express how I feel right now . Seeing you growing up this much even through everything you've been through , I am really happy to have you as my friend and hope that our friendship will last for eternity . Also I want this project to be a sign of how much WE love u not just me or her or him. I know for sure that they love you sooo much but never as much as I do hehehe , and we all wish u from the depths of our heart that you will continue growing up healthy happy and acheive all ur dreams . <br><br><b>HAPPY BIRTHDAY MY LOVE 💗</b>
-        </div>`,
-      }
-      {
-  html: `<h2>Thank you for being here 💖</h2>
-         <button class="cute-btn" id="restartBtn">Go back to the start</button>`,
-  interactive: true,
-  handle: function() {
-    document.getElementById('restartBtn').onclick = () => {
-      showSection(0);
+<div id="container"></div>
+<script>
+const container = document.getElementById('container');
+
+const sections = [
+  // 0. Greeting
+  function() {
+    container.innerHTML = `
+      <h2>Hi sweetie, AICHA! 👑</h2>
+      <p>Welcome to your special page 🎉✨</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 1. Compliment
+  function() {
+    container.innerHTML = `
+      <p>You look so pretty today! 🌸💖 (as always hehe)</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 2. Question: Do you know what's today?
+  function() {
+    container.innerHTML = `
+      <p>Do you know what's today? <br>
+        <span style="font-size:1.5em;">👑✨</span>
+      </p>
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+      <div class="hint">(Click an option to continue)</div>
+    `;
+    document.getElementById('yesBtn').onclick = function() {
+      section = 3; showSection();
+    };
+    document.getElementById('noBtn').onclick = function() {
+      section = 4; showSection();
+    };
+  },
+  // 3. Yes response
+  function() {
+    container.innerHTML = `
+      <p>Of course you do, today is a very special day. Right queen hehe! 🌟👑</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 4. No response
+  function() {
+    container.innerHTML = `
+      <p>Ohh I guess you forgot hehehe, it's okay 💞</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 5. "I have a question for u?"
+  function() {
+    container.innerHTML = `
+      <p>I have a question for u? 🤔💭</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 6. "Who is the person that u love the most?" (input)
+  function() {
+    container.innerHTML = `
+      <p>Who is the person that u love the most?</p>
+      <form id="loveForm" autocomplete="off" style="margin-bottom:2em;">
+        <input type="text" id="loveInput" placeholder="Type your answer here..." autofocus>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="loveResp"></div>
+      <div class="hint">(Type and submit)</div>
+    `;
+    document.getElementById('loveForm').onsubmit = function(e) {
+      e.preventDefault();
+      const val = document.getElementById('loveInput').value.trim().toLowerCase();
+      let resp = '';
+      if(val === 'hiba') resp = 'awwww I LOVE U TOO 💖';
+      else if(val === 'marwa') resp = 'cute u guys are my fav too 💞';
+      else if(val === 'abdullah') resp = 'not me T_T u guys are cute though 😅';
+      else resp = 'not what i expected but ok cuties 😘';
+      const respDiv = document.getElementById('loveResp');
+      respDiv.innerHTML = `<div style="margin-top:2em;font-size:1.1em;background:#fff0f6;border-radius:8px;padding:1em;">${resp}<br><span class="hint">(Press space to continue)</span></div>`;
+      document.getElementById('loveInput').disabled = true;
+      document.querySelector('#loveForm button').disabled = true;
+      readyForSpace = true;
+    };
+    readyForSpace = false;
+  },
+  // 7. August 18th special
+  function() {
+    container.innerHTML = `
+      <p>August 18th today is really special. Why you will ask me...</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 8. Birthday reason
+  function() {
+    container.innerHTML = `
+      <p>Because your mother gave birth to the prettiest, kindest, and very dalo3aaa girl! 🎈💕</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 9. Birthday Letter
+  function() {
+    container.innerHTML = `
+      <h1 style="color:#ff69b4;font-size:2.3em;margin-bottom:0.5em;">HAPPY BIRTHDAY</h1>
+      <div class="letter">
+        I have no words to express how I feel right now. Seeing you growing up this much even through everything you've been through.<br><br>
+        I am really happy to have you as my friend and hope that our friendship will last for eternity.<br><br>
+        Also I want this project to be a sign of how much WE love you not just me or her or him.<br><br>
+        I know for sure that they love YOU sooo much but never as much as I do hehehe, and we all wish you from the depths of our heart that you will continue growing up healthy happy and acheive all your dreams.<br><br>
+        <b>HAPPY BIRTHDAY MY LOVE</b>
+      </div>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 10. Don't cry
+  function() {
+    container.innerHTML = `
+      <p>Please don't cry sweetheart, remember your tears are precious 💖</p>
+      <div class="hint">(Press space to continue)</div>
+    `;
+  },
+  // 11. Restart
+  function() {
+    container.innerHTML = `
+      <button id="restartBtn">Restart</button>
+      <div class="hint">(Click to start over)</div>
+    `;
+    document.getElementById('restartBtn').onclick = function() {
+      section = 0; showSection();
     };
   }
+];
+
+let section = 0;
+let readyForSpace = true;
+
+function showSection() {
+  sections[section]();
+  readyForSpace = true;
+  // For sections where space should NOT advance (question/options and input before response)
+  if(section === 2 || section === 6 || section === 11) {
+    readyForSpace = false;
+  }
 }
-    ];
 
-    let current = 0;
+showSection();
 
-    // Utility: show content in container
-    function showContent(html) {
-      document.getElementById('container').innerHTML = html;
+document.addEventListener('keydown', function(e) {
+  if(e.code === 'Space' && readyForSpace) {
+    // After input section, make sure response is shown before going to next
+    if(section === 6) {
+      if(document.getElementById('loveResp').innerHTML.trim() === '') return;
     }
-
-    // Utility: wait for space key to continue
-    function waitSpace(next) {
-      function onSpace(e) {
-        if (e.code === 'Space' || e.key === ' ') {
-          window.removeEventListener('keydown', onSpace);
-          next();
-        }
-      }
-      window.addEventListener('keydown', onSpace);
-    }
-
-    // Main section handler
-    function showSection(idx) {
-      current = idx;
-      const section = sections[idx];
-      showContent(section.html);
-      if (section.interactive) {
-        section.handle(() => showSection(idx + 1));
-      } else if (idx < sections.length - 1) {
-        waitSpace(() => showSection(idx + 1));
-      }
-    }
-
-    // Initial load
-    showSection(0);
-
-    // Prevent scrolling with spacebar
-    window.onkeydown = (e) => {
-      if (e.code === 'Space' && e.target === document.body) e.preventDefault();
-    }
-  </script>
+    section++;
+    if(section >= sections.length) section = sections.length - 1;
+    showSection();
+  }
+});
+</script>
 </body>
 </html>
-{
