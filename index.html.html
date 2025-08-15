@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday AICHA!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #ffd6e0;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+      color: #d94f8a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      transition: background 0.4s;
+    }
+    #container {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2rem 2.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 4px 24px rgba(225,50,100,0.15);
+      text-align: center;
+      max-width: 420px;
+      min-width: 260px;
+      margin: 2rem;
+    }
+    h1, h2 {
+      font-family: 'Pacifico', 'Comic Sans MS', cursive;
+      margin: 0.5em 0;
+      color: #df2d77;
+      letter-spacing: 2px;
+    }
+    .cute-btn {
+      background: linear-gradient(90deg, #ffb6c1 60%, #ffe4ec 100%);
+      color: #d94f8a;
+      border: none;
+      border-radius: 1rem;
+      padding: 0.6em 1.6em;
+      font-size: 1.1em;
+      font-family: inherit;
+      margin: 0.7em 1em 0 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(225,90,150,0.08);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .cute-btn:hover {
+      background: linear-gradient(90deg, #ffe4ec 60%, #ffb6c1 100%);
+      box-shadow: 0 4px 16px rgba(225,90,150,0.14);
+    }
+    input[type="text"] {
+      padding: 0.6em 1em;
+      border-radius: 1rem;
+      border: 1.5px solid #ffb6c1;
+      margin-top: 1em;
+      font-size: 1em;
+      color: #d94f8a;
+      background: #fff5fa;
+      text-align: center;
+      outline: none;
+      font-family: inherit;
+    }
+    .letter-container {
+      background: #fff0f7;
+      border-radius: 1.5rem;
+      padding: 2rem 1.5rem;
+      margin-top: 1.5em;
+      color: #d94f8a;
+      font-size: 1.1em;
+      box-shadow: 0 2px 12px rgba(225,90,150,0.08);
+    }
+    .space-tip {
+      font-size: 0.95em;
+      color: #ab4780;
+      margin-top: 1em;
+      opacity: 0.8;
+      letter-spacing: 1px;
+      animation: blink 1.6s infinite;
+    }
+    @keyframes blink {
+      0%, 60%, 100% { opacity: 0.8; }
+      80% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- Content will appear here -->
+  </div>
+  <script>
+    // Sections content
+    const sections = [
+      // Section 1: Greeting
+      {
+        html: `<h1>Hello, AICHA!</h1>
+               <div class="space-tip">Press space to continue...</div>`,
+      },
+      // Section 2: Compliment
+      {
+        html: `<h2>You look pretty today ✨</h2>
+               <div class="space-tip">Press space to continue...</div>`,
+      },
+      // Section 3: Do you know what's today? (Yes/No)
+      {
+        html: `<h2>Do u know what's today?</h2>
+               <button class="cute-btn" id="yesBtn">Yes</button>
+               <button class="cute-btn" id="noBtn">No</button>`,
+        interactive: true,
+        handle: function(next) {
+          const yesBtn = document.getElementById('yesBtn');
+          const noBtn = document.getElementById('noBtn');
+          yesBtn.onclick = () => {
+            showContent(`<h2>Of course u do,<br>today is a very special day.<br>right queen hehe!</h2>
+                         <div class="space-tip">Press space to continue...</div>`);
+            waitSpace(next);
+          };
+          noBtn.onclick = () => {
+            showContent(`<h2>Ohh i guess u forgot hehehe,<br>it's okay 💗</h2>
+                         <div class="space-tip">Press space to continue...</div>`);
+            waitSpace(next);
+          };
+        }
+      },
+      // Section 4: Question - who do you love the most?
+      {
+        html: `<h2>I have a question for u ?</h2>
+               <div class="space-tip">Press space to continue...</div>`,
+      },
+      {
+        html: `<h2>Who is the person that u love the most?</h2>
+               <input type="text" id="loveInput" placeholder="Type a name...">
+               <br>
+               <button class="cute-btn" id="submitLove">Submit</button>`,
+        interactive: true,
+        handle: function(next) {
+          document.getElementById('submitLove').onclick = () => {
+            const val = document.getElementById('loveInput').value.trim().toLowerCase();
+            let msg = '';
+            if (val === 'hiba') {
+              msg = 'awwww I LOVE U TOO 💕';
+            } else if (val === 'marwa') {
+              msg = 'cute u guys are my fav too 😘';
+            } else if (val === 'abdullah') {
+              msg = 'not me T_T u guys are cute though 🥺';
+            } else if (val === '') {
+              msg = 'hmmm you didn\'t answer! 🙈';
+            } else {
+              msg = 'not what i expected but ok cuties 💗';
+            }
+            showContent(`<h2>${msg}</h2>
+                         <div class="space-tip">Press space to continue...</div>`);
+            waitSpace(next);
+          };
+          document.getElementById('loveInput').addEventListener("keyup", function(e) {
+            if (e.key === "Enter") document.getElementById('submitLove').click();
+          });
+        }
+      },
+      // Section 5: August 18th special
+      {
+        html: `<h2>August 18th today is really special.<br>Why u will ask me</h2>
+               <div class="space-tip">Press space to continue...</div>`,
+      },
+      // Section 6: Birth message
+      {
+        html: `<h2>bc ur mother gave birth to the prettiest<br>and kindest and very dalo3aaa girl 💖</h2>
+               <div class="space-tip">Press space to continue...</div>`,
+      },
+      // Section 7: Letter
+      {
+        html: `<h1 style="font-size:2.6em; margin-bottom:0.2em;">HAPPY BIRTHDAY</h1>
+        <div class="letter-container">
+            i have no words to express how i feel riht now seeing u growing up this much even through everything you've been through  i am really happy to have u as my friend and hope that our friendship will last for enternity . Also i want this project to be a sign of how much we love u not just me or her or him i know for sure that they love u sooo much but never as much as i do hehehe  and we all wish u from the depth of our heart that u continue growing up healthy happy and acheive all ur dreams . <br><br><b>HAPPY BIRTHDAY MY LOVE 💗</b>
+        </div>`,
+      }
+    ];
+
+    let current = 0;
+
+    // Utility: show content in container
+    function showContent(html) {
+      document.getElementById('container').innerHTML = html;
+    }
+
+    // Utility: wait for space key to continue
+    function waitSpace(next) {
+      function onSpace(e) {
+        if (e.code === 'Space' || e.key === ' ') {
+          window.removeEventListener('keydown', onSpace);
+          next();
+        }
+      }
+      window.addEventListener('keydown', onSpace);
+    }
+
+    // Main section handler
+    function showSection(idx) {
+      current = idx;
+      const section = sections[idx];
+      showContent(section.html);
+      if (section.interactive) {
+        section.handle(() => showSection(idx + 1));
+      } else if (idx < sections.length - 1) {
+        waitSpace(() => showSection(idx + 1));
+      }
+    }
+
+    // Initial load
+    showSection(0);
+
+    // Prevent scrolling with spacebar
+    window.onkeydown = (e) => {
+      if (e.code === 'Space' && e.target === document.body) e.preventDefault();
+    }
+  </script>
+</body>
+</html>
