@@ -236,7 +236,7 @@ function showSection() {
   sections[section]();
   readyForSpace = true;
   // For sections where space should NOT advance (question/options and input before response)
-  if(section === 2 || section === 6 || section === 12) {
+  if(section === 2 || section === 6) {
     readyForSpace = false;
   }
 }
